@@ -1,0 +1,78 @@
+/* General Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8; /* Light blue-gray background */
+    min-height: 100vh;
+}
+
+/* Style for code/output blocks */
+.code-output {
+    background-color: #1f2937; /* Dark Gray */
+    color: #4ade80; /* Green Text */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+
+/* =======================================================
+PART 1: CSS3 Transitions and Keyframe Animations
+=======================================================
+*/
+
+/* Button Hover Transition */
+.ui-btn {
+    /* Define transition for all properties */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.ui-btn:hover {
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 8px 20px rgba(25, 118, 210, 0.3); /* Blue shadow */
+}
+.ui-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* Continuous Keyframe Animation (Spinning Loader) */
+@keyframes spin-loader {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+.spinning-loader {
+    /* Apply the animation */
+    animation: spin-loader 3s infinite linear;
+}
+
+
+/* =======================================================
+PART 3: CSS Keyframe Animation Triggered by JavaScript
+=======================================================
+*/
+
+/* Keyframe for the dynamic animation (Slide In and Rotate) */
+@keyframes slide-rotate-in {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px) rotate(-10deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+/* The class that JS adds to trigger the animation */
+.is-animated {
+    animation: slide-rotate-in 0.6s ease-out forwards;
+}
+
+/* Initial state of the element to be animated */
+#triggerBox {
+    opacity: 0; /* Hidden initially */
+    min-height: 100px;
+}
+
